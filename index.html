@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Guide to IPOs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Brilliant Blues -->
+    <!-- Application Structure Plan: The infographic follows a linear narrative designed for educational flow. It starts with a high-level definition ("What is an IPO?"), moves into the chronological "Journey to Public," introduces the "Key Players" involved, presents a balanced view with "Pros vs. Cons," and concludes with "Investor Insights." This structure guides the user from basic concepts to more detailed aspects, making complex information digestible. The single-page, scrollable format with clear headings acts as the primary navigation, ensuring a simple and intuitive user experience. -->
+    <!-- Visualization & Content Choices: 
+        1. IPO Process: Report Info -> Multi-stage IPO process. Goal -> Organize a process. Viz/Method -> HTML/CSS flowchart. Interaction -> N/A (static visual). Justification -> A flowchart is the clearest way to show a sequential process without user interaction. Library -> N/A (HTML/Tailwind).
+        2. Key Players: Report Info -> Roles of company, banks, SEC. Goal -> Organize groups. Viz/Method -> Icon-style cards using Unicode characters and HTML/CSS. Interaction -> N/A. Justification -> Simple icons and cards visually separate roles for quick comprehension. Library -> N/A (HTML/Tailwind).
+        3. IPO Costs: Report Info -> Underwriting fees range from 4.1% to 7.0%. Goal -> Compare data points. Viz/Method -> Bar Chart. Interaction -> Tooltips on hover. Justification -> A bar chart effectively visualizes the range of a key cost component. Library -> Chart.js.
+        4. Investor Allocation: Report Info -> Different types of investors. Goal -> Show composition. Viz/Method -> Donut Chart. Interaction -> Tooltips on hover. Justification -> A donut chart is ideal for showing parts of a whole, illustrating share distribution. Library -> Chart.js.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F9FF; /* sky-50 */
+            color: #075985; /* sky-800 */
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            border: 1px solid #E0F2FE; /* sky-100 */
+        }
+        .section-title {
+            color: #0C4A6E; /* sky-900 */
+        }
+        .stat-number {
+            color: #0284C7; /* sky-600 */
+            font-weight: 800;
+        }
+        .chart-container {
+            position: relative;
+            margin: auto;
+            height: 300px;
+            width: 100%;
+            max-width: 400px;
+        }
+        .flowchart-step {
+            position: relative;
+            padding-left: 2.5rem;
+            padding-bottom: 2rem;
+            border-left: 3px solid #38BDF8; /* sky-400 */
+        }
+        .flowchart-step:last-child {
+            border-left: 3px solid transparent;
+            padding-bottom: 0;
+        }
+        .flowchart-dot {
+            position: absolute;
+            left: -0.8rem;
+            top: 0;
+            height: 1.5rem;
+            width: 1.5rem;
+            background-color: #0284C7; /* sky-600 */
+            border-radius: 9999px;
+            border: 4px solid #F0F9FF; /* sky-50 */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto px-4 py-12 md:py-20">
+
+        <header class="text-center mb-16 md:mb-24">
+            <h1 class="text-4xl md:text-6xl font-extrabold section-title mb-4">The IPO Playbook</h1>
+            <p class="text-lg md:text-xl text-sky-700 max-w-3xl mx-auto">An Initial Public Offering (IPO) is a company's debut on the public stock market. We break down this complex journey into a simple, visual guide.</p>
+        </header>
+
+        <section id="what-is-ipo" class="mb-16 md:mb-24">
+            <div class="grid md:grid-cols-3 gap-8 items-center">
+                <div class="md:col-span-2 card">
+                    <h2 class="text-3xl font-bold section-title mb-4">From Private to Public</h2>
+                    <p class="text-sky-700 leading-relaxed">An IPO is the process where a private company sells its shares to the public for the first time, becoming a publicly traded entity. This transition unlocks access to vast pools of capital, allowing companies to fund growth, reduce debt, and enhance their public profile. It's a pivotal moment, fundamentally changing a company's structure, obligations, and relationship with the financial world.</p>
+                </div>
+                <div class="card text-center">
+                    <h3 class="text-lg font-semibold text-sky-800 mb-2">Primary Goal</h3>
+                    <p class="text-5xl stat-number">Raise Capital</p>
+                    <p class="text-sky-600 mt-2">Fueling expansion, innovation, and M&A.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="process" class="mb-16 md:mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold section-title text-center mb-12">The Journey to Going Public</h2>
+            <div class="card max-w-4xl mx-auto">
+                <div class="relative">
+                    <div class="flowchart-step">
+                        <div class="flowchart-dot"></div>
+                        <h3 class="font-bold text-xl text-sky-800">1. Pre-IPO Preparation</h3>
+                        <p class="text-sky-700">The company strengthens its financials, assembles a team of advisors (bankers, lawyers, auditors), and performs extensive due diligence. This can take 12-18 months.</p>
+                    </div>
+                    <div class="flowchart-step">
+                        <div class="flowchart-dot"></div>
+                        <h3 class="font-bold text-xl text-sky-800">2. Regulatory Filing (Form S-1)</h3>
+                        <p class="text-sky-700">A detailed registration statement is filed with the SEC, disclosing financials, operations, and risk factors. The SEC reviews this document for completeness and accuracy.</p>
+                    </div>
+                    <div class="flowchart-step">
+                        <div class="flowchart-dot"></div>
+                        <h3 class="font-bold text-xl text-sky-800">3. Roadshow & Book Building</h3>
+                        <p class="text-sky-700">Management presents to institutional investors to gauge interest and build demand. Underwriters use this feedback to determine the offering price range.</p>
+                    </div>
+                    <div class="flowchart-step">
+                        <div class="flowchart-dot"></div>
+                        <h3 class="font-bold text-xl text-sky-800">4. Pricing and Trading</h3>
+                        <p class="text-sky-700">The final offer price is set. Shares are sold to initial investors, and the stock begins trading on an exchange like the NYSE or Nasdaq, marking its public debut.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="players" class="mb-16 md:mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold section-title text-center mb-12">Meet the Key Players</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 text-center">
+                <div class="card"><p class="text-5xl mb-2">🏢</p><h3 class="font-bold text-sky-800">The Company</h3></div>
+                <div class="card"><p class="text-5xl mb-2">🏦</p><h3 class="font-bold text-sky-800">Investment Banks</h3></div>
+                <div class="card"><p class="text-5xl mb-2">⚖️</p><h3 class="font-bold text-sky-800">Legal Counsel</h3></div>
+                <div class="card"><p class="text-5xl mb-2">🧾</p><h3 class="font-bold text-sky-800">Auditors</h3></div>
+                <div class="card col-span-2 lg:col-span-1"><p class="text-5xl mb-2">🏛️</p><h3 class="font-bold text-sky-800">The SEC</h3></div>
+            </div>
+            <p class="text-center mt-6 text-sky-700 max-w-2xl mx-auto">A successful IPO requires a coordinated orchestra of participants, from the company's own management to the regulatory oversight of the SEC.</p>
+        </section>
+
+        <section id="pros-cons" class="mb-16 md:mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold section-title text-center mb-12">The High-Stakes Trade-Off</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="card border-l-4 border-green-400">
+                    <h3 class="text-2xl font-bold text-green-700 mb-4">Advantages 👍</h3>
+                    <ul class="space-y-2 text-green-600 list-disc list-inside">
+                        <li><strong>Massive Capital Infusion:</strong> Access to public markets for funding.</li>
+                        <li><strong>Enhanced Visibility:</strong> Increased brand recognition and credibility.</li>
+                        <li><strong>Liquidity for Insiders:</strong> An exit strategy for early investors and founders.</li>
+                        <li><strong>Attract Top Talent:</strong> Use public stock as valuable compensation.</li>
+                    </ul>
+                </div>
+                <div class="card border-l-4 border-red-400">
+                    <h3 class="text-2xl font-bold text-red-700 mb-4">Disadvantages 👎</h3>
+                    <ul class="space-y-2 text-red-600 list-disc list-inside">
+                        <li><strong>Extreme Costs:</strong> Underwriting and compliance fees are substantial.</li>
+                        <li><strong>Loss of Privacy:</strong> Must publicly disclose sensitive financial data.</li>
+                        <li><strong>Intense Scrutiny:</strong> Constant pressure from investors and analysts.</li>
+                        <li><strong>Management Distraction:</strong> The process is lengthy and all-consuming.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="investor-view" class="mb-16 md:mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold section-title text-center mb-12">An Investor's Perspective</h2>
+            <div class="grid lg:grid-cols-5 gap-8">
+                <div class="lg:col-span-2 space-y-8">
+                    <div class="card">
+                        <h3 class="text-xl font-bold text-sky-800 mb-2">Volatility is the Norm</h3>
+                        <p class="text-sky-700">IPO stocks are notoriously volatile. Prices can be driven by market hype as much as company fundamentals, creating both opportunity and significant risk.</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="text-xl font-bold text-sky-800 mb-2">The Lock-Up Period</h3>
+                        <p class="text-sky-700">Insiders are typically barred from selling shares for 90-180 days. When this period expires, a flood of new shares can hit the market, potentially pushing the price down.</p>
+                    </div>
+                </div>
+                <div class="lg:col-span-3 card">
+                    <h3 class="text-xl font-bold text-sky-800 text-center mb-4">Typical IPO Share Allocation</h3>
+                    <div class="chart-container h-[250px] md:h-[300px]">
+                        <canvas id="investorChart"></canvas>
+                    </div>
+                    <p class="text-center text-sm text-sky-600 mt-4">A large portion of shares is typically allocated to institutional investors, with retail investors receiving a smaller slice.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="costs" class="mb-16 md:mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold section-title text-center mb-12">The Price of Going Public</h2>
+            <div class="card max-w-3xl mx-auto">
+                 <h3 class="text-xl font-bold text-sky-800 text-center mb-4">Typical Underwriting Fees (% of Gross Proceeds)</h3>
+                <div class="chart-container h-[250px] md:h-[300px]">
+                    <canvas id="costsChart"></canvas>
+                </div>
+                <p class="text-center text-sm text-sky-600 mt-4">Underwriting fees are one of the most significant costs of an IPO, typically ranging from 4% to 7% of the total capital raised.</p>
+            </div>
+        </section>
+
+        <footer class="text-center border-t border-sky-200 pt-8">
+            <p class="text-sky-700">This infographic is for informational purposes only and is not financial advice.</p>
+            <p class="text-sm text-sky-600 mt-2">Data synthesized from research on US IPOs.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const wrapLabel = (label) => {
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + word).length > 16) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            });
+            lines.push(currentLine.trim());
+            return lines;
+        };
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        const investorChartCtx = document.getElementById('investorChart').getContext('2d');
+        new Chart(investorChartCtx, {
+            type: 'doughnut',
+            data: {
+                labels: [wrapLabel('Institutional Investors'), wrapLabel('High Net Worth Individuals'), wrapLabel('Retail Investors'), wrapLabel('Anchor Investors')],
+                datasets: [{
+                    data: [50, 20, 15, 15],
+                    backgroundColor: ['#0EA5E9', '#38BDF8', '#7DD3FC', '#0369A1'],
+                    borderColor: '#F0F9FF',
+                    borderWidth: 4,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#075985' }
+                    },
+                    tooltip: {
+                        callbacks: { title: tooltipTitleCallback }
+                    }
+                }
+            }
+        });
+
+        const costsChartCtx = document.getElementById('costsChart').getContext('2d');
+        new Chart(costsChartCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Average Low End', 'Average High End'],
+                datasets: [{
+                    label: 'Underwriting Fee (%)',
+                    data: [4.1, 7.0],
+                    backgroundColor: ['#38BDF8', '#0EA5E9'],
+                    borderColor: ['#0284C7', '#0C4A6E'],
+                    borderWidth: 2,
+                    borderRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { color: '#075985', callback: (value) => value + '%' },
+                        grid: { color: '#E0F2FE' }
+                    },
+                    x: {
+                        ticks: { color: '#075985' },
+                        grid: { display: false }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback,
+                            label: (context) => context.raw + '%'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
